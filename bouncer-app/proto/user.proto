@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package proto;
+
+message CreateUserRequest{
+  string FirstName = 1;
+  string LastName = 2;
+  string Address = 3;
+}
+
+message CreateUserResponse{
+}
+
+
+message GetRequest {
+  string ID = 1;
+}
+message GetResponse {
+  string ID = 1;
+  string FirstName = 2;
+  string LastName = 3;
+  string Address = 4;
+}
+
+message UpdateUserRequest{
+  string ID = 1;
+  string FirstName = 2;
+  string LastName = 3;
+  string Address = 4;
+}
+
+message UpdateUserResponse{
+
+}
+
+message DeleteUserRequest{
+  string ID = 1;
+}
+
+message DeleteUserResponse{
+
+}
+
+message GetAllRequest{
+}
+
+message GetAllResponse {
+  repeated GetResponse User = 1;
+}
+
+
+service AddService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc RetrieveUser(GetRequest) returns (GetResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+  rpc RetrieveAllUsers(GetAllRequest) returns (GetAllResponse);
+}
